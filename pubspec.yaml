@@ -1,5 +1,5 @@
 name: volume_regulator
-description: A flutter plugin to control device volume.
+description: A flutter plugin to adjust device volume from 0% to 100%.
 version: 0.0.1
 author: Ilya Chirkunov <xc@yar.net>
 homepage: https://github.com/cheebeez/volume_regulator

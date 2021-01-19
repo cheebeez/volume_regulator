@@ -1,14 +1,30 @@
+/*
+ *  volume_regulator.dart
+ *
+ *  Created by Ilya Chirkunov <xc@yar.net> on 16.01.2021.
+ */
 
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 
 class VolumeRegulator {
-  static const MethodChannel _channel =
-      const MethodChannel('volume_regulator');
+  static const _channel = MethodChannel('volume_regulator');
+  static const _events = EventChannel('volume_regulator/volumeEvents');
+  static Stream<int>? _volumeStream;
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  static Future<int> getVolume() async {
+    return await _channel.invokeMethod('get');
+  }
+
+  static Future<void> setVolume(int value) async {
+    await _channel.invokeMethod('set', value);
+  }
+
+  /// Get the volume stream.
+  static Stream<int> get volumeStream {
+    _volumeStream ??=
+        _events.receiveBroadcastStream().map<int>((value) => value);
+
+    return _volumeStream!;
   }
 }

@@ -15,6 +15,27 @@ dependencies:
   volume_regulator: ^0.0.1
 ```
 
+### iOS
+To hide the volume HUD edit your `AppDelegate.swift` and add `self.window?.insertSubview(MPVolumeView(), at: 0)`
+
+```swift
+import UIKit
+import Flutter
+import MediaPlayer
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+    override func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        self.window?.insertSubview(MPVolumeView(), at: 0)
+        GeneratedPluginRegistrant.register(with: self)
+        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+}
+```
+
 ## Usage
 
 ```dart

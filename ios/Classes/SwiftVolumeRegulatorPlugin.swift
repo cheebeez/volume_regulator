@@ -14,6 +14,9 @@ public class SwiftVolumeRegulatorPlugin: NSObject, FlutterPlugin {
         let channel = FlutterMethodChannel(name: "volume_regulator", binaryMessenger: registrar.messenger())
         let instance = SwiftVolumeRegulatorPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
+
+        let eventChannel = FlutterEventChannel.init(name: "volume_regulator/volumeEvents", binaryMessenger: registrar.messenger())
+        eventChannel.setStreamHandler(VolumeStreamHandler())
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -24,6 +27,29 @@ public class SwiftVolumeRegulatorPlugin: NSObject, FlutterPlugin {
                 volumeRegulator.setVolume(call.arguments as! Int)
             default:
                 result(FlutterMethodNotImplemented)
+        }
+    }
+}
+
+/** Handler for volume changes, passed to setStreamHandler() */
+class VolumeStreamHandler: NSObject, FlutterStreamHandler {
+    private var eventSink: FlutterEventSink?
+
+    func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+        eventSink = events
+        NotificationCenter.default.addObserver(self, selector: #selector(onRecieve(_:)), name: NSNotification.Name(rawValue: "volume_changed"), object: nil)
+        return nil
+    }
+
+    func onCancel(withArguments arguments: Any?) -> FlutterError? {
+        eventSink = nil
+        return nil
+    }
+
+    // Notification receiver for volume changes, passed to addObserver()
+    @objc private func onRecieve(_ notification: Notification) {
+        if let volume = notification.userInfo!["value"] {
+            eventSink?(volume)
         }
     }
 }

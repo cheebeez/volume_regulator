@@ -6,13 +6,13 @@
 
 import MediaPlayer
 import AVKit
-import AVFoundation
 
 class VolumeRegulator {
     var outputVolumeObserve: NSKeyValueObservation?
 
     init() {
-        listenVolumeButton()
+        try? AVAudioSession.sharedInstance().setActive(true)
+        outputVolumeObserve = AVAudioSession.sharedInstance().observe(\.outputVolume, changeHandler: onVolumeChange)
     }
 
     func getVolume() -> Int {
@@ -20,25 +20,17 @@ class VolumeRegulator {
     }
 
     func setVolume(_ value: Int) {
-        MPVolumeView.setVolume(Float(value) / 100)
-    }
-
-    func listenVolumeButton() {
-        try? AVAudioSession.sharedInstance().setActive(true)
-
-        outputVolumeObserve = AVAudioSession.sharedInstance().observe(\.outputVolume) { (audioSession, changes) in
-            print(Int(audioSession.outputVolume * 100))
-        }
-    }
-}
-
-extension MPVolumeView {
-    static func setVolume(_ volume: Float) {
-        let volumeView = MPVolumeView(frame: .zero)
+        let volumeView = MPVolumeView()
         let slider = volumeView.subviews.first as? UISlider
 
+        // Delay for ios 11+.
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
-            slider?.setValue(volume, animated: false)
+            slider?.setValue(Float(value) / 100, animated: false)
         }
+    }
+
+    func onVolumeChange(audioSession: AVAudioSession, changes: NSKeyValueObservedChange<Float>) {
+        let volume = Int(audioSession.outputVolume * 100)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "volume_changed"), object: nil, userInfo: ["value": volume])
     }
 }

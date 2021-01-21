@@ -23,15 +23,15 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    /*
-    VolumeRegulator.volumeStream.listen((value) {
+    // Init slider.
+    VolumeRegulator.getVolume().then((value) {
       setState(() {
         _volume = value.toDouble();
       });
     });
-    */
 
-    VolumeRegulator.getVolume().then((value) {
+    // Listening to volume change events.
+    VolumeRegulator.volumeStream.listen((value) {
       setState(() {
         _volume = value.toDouble();
       });
@@ -61,18 +61,6 @@ class _MyAppState extends State<MyApp> {
                 label: _volume.round().toString(),
                 onChanged: (double value) {
                   VolumeRegulator.setVolume(value.toInt());
-
-                  /*
-                  VolumeRegulator.getVolume().then((value) {
-                    setState(() {
-                      _volume = value.toDouble();
-                    });
-                  });
-                  */
-
-                  setState(() {
-                    _volume = value;
-                  });
                 },
               ),
             ],

@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Volume: ${_volume.round()}%",
+                'Volume: ${_volume.round()}%',
               ),
               Slider(
                 value: _volume,

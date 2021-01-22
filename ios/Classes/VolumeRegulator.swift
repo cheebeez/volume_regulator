@@ -8,11 +8,10 @@ import MediaPlayer
 import AVKit
 
 class VolumeRegulator {
-    var outputVolumeObserve: NSKeyValueObservation?
 
     init() {
-        try? AVAudioSession.sharedInstance().setActive(true)
-        outputVolumeObserve = AVAudioSession.sharedInstance().observe(\.outputVolume, changeHandler: onVolumeChange)
+        NotificationCenter.default.addObserver(self, selector: #selector(onVolumeChange(_:)), name: 
+                NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
     }
 
     func getVolume() -> Int {
@@ -29,8 +28,8 @@ class VolumeRegulator {
         }
     }
 
-    func onVolumeChange(audioSession: AVAudioSession, changes: NSKeyValueObservedChange<Float>) {
-        let volume = Int(audioSession.outputVolume * 100)
+    @objc private func onVolumeChange(_ notification: NSNotification) {
+        let volume = Int(notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as! Float * 100)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "volume_changed"), object: nil, userInfo: ["value": volume])
     }
 }

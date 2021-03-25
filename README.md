@@ -1,6 +1,6 @@
 # Volume Regulator
 
-A Flutter plugin to adjust device volume from 0% to 100%.
+A Flutter plugin to adjust device volume from 0% to 100%. Compatible with Android 6.0+ and iOS 10.0+.
 
 [![flutter platform](https://img.shields.io/badge/Platform-Flutter-yellow.svg)](https://flutter.io)
 [![pub package](https://img.shields.io/pub/v/volume_regulator.svg)](https://pub.dartlang.org/packages/volume_regulator)

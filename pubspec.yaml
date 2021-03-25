@@ -1,6 +1,6 @@
 name: volume_regulator
-description: A Flutter plugin to adjust device volume from 0% to 100%.
-version: 0.0.1
+description: A Flutter plugin to adjust device volume from 0% to 100%. Compatible with Android 6.0+ and iOS 10.0+.
+version: 0.0.2
 author: Ilya Chirkunov <xc@yar.net>
 homepage: https://github.com/cheebeez/volume_regulator
 

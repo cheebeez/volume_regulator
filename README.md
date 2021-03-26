@@ -1,6 +1,6 @@
 # Volume Regulator
 
-A Flutter plugin to adjust device volume from 0 to 100 percent.
+A Flutter plugin to monitor and adjust device volume from 0 to 100%.
 
 [![flutter platform](https://img.shields.io/badge/Platform-Flutter-yellow.svg)](https://flutter.io)
 [![pub package](https://img.shields.io/pub/v/volume_regulator.svg)](https://pub.dartlang.org/packages/volume_regulator)
@@ -16,6 +16,7 @@ dependencies:
 ```
 
 ### iOS
+
 To hide the volume HUD edit your `AppDelegate.swift` and add `self.window?.insertSubview(MPVolumeView(), at: 0)`
 
 ```swift

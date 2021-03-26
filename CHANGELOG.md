@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Add more information.
+
 ## 0.0.2
 
 * Add compatibility information.

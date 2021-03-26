@@ -43,8 +43,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Volume Regulator'),
           centerTitle: true,
+          title: const Text('Volume Regulator'),
         ),
         body: Center(
           child: Column(

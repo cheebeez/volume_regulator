@@ -12,10 +12,12 @@ class VolumeRegulator {
   static const _events = EventChannel('volume_regulator/volumeEvents');
   static Stream<int>? _volumeStream;
 
+  /// Get the volume value.
   static Future<int> getVolume() async {
     return await _channel.invokeMethod('get');
   }
 
+  /// Set the new volume value.
   static Future<void> setVolume(int value) async {
     await _channel.invokeMethod('set', value);
   }

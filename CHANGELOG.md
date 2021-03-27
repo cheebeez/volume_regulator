@@ -1,3 +1,7 @@
+## 0.0.5
+
+* Fix a negative volume bug on Android.
+
 ## 0.0.4
 
 * Update description.

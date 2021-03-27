@@ -26,8 +26,8 @@ class VolumeRegulator(val context: Context, handler: Handler) : ContentObserver(
     private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
     private val localBroadcastManager = LocalBroadcastManager.getInstance(context)
     private val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-    private var appVolume = -1
-    private var oldVolume = -1
+    private var appVolume = 0
+    private var oldVolume = 0
 
     fun appToNative(value: Int): Int {
         return (maxVolume * value / 100.0).roundToInt()
@@ -48,6 +48,8 @@ class VolumeRegulator(val context: Context, handler: Handler) : ContentObserver(
     fun setVolume(value: Int) {
         appVolume = value
         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, appToNative(appVolume), 0)
+
+        // Send a volume change event.
         onChange(false)
     }
 
@@ -57,6 +59,9 @@ class VolumeRegulator(val context: Context, handler: Handler) : ContentObserver(
 
         // Prevent re-sending the same value.
         oldVolume = if (volume != oldVolume) volume else return
+
+        // Save a new value as appVolume.
+        appVolume = volume
 
         val volumeIntent = Intent(ACTION_VOLUME_CHANGED)
         volumeIntent.putExtra(ACTION_VOLUME_CHANGED_EXTRA, volume)

@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  double _volume = 0.0;
+  double _volume = 0;
 
   @override
   void initState() {

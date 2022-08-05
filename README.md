@@ -2,13 +2,16 @@
 
 A Flutter plugin to monitor and adjust device volume from 0 to 100%.
 
+[![flutter platform](https://img.shields.io/badge/Platform-Flutter-yellow.svg)](https://flutter.io)
+[![pub package](https://img.shields.io/pub/v/volume_regulator.svg)](https://pub.dartlang.org/packages/volume_regulator)
+
 ## Installation
 
 To use this package, add `volume_regulator` as a dependency in your `pubspec.yaml` file.
 
 ```yaml
 dependencies:
-  volume_regulator: ^2.0.0
+  volume_regulator: ^2.1.0
 ```
 
 ### iOS

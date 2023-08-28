@@ -1,7 +1,7 @@
 /*
  *  main.dart
  *
- *  Created by Ilya Chirkunov <xc@yar.net> on 16.01.2021.
+ *  Created by Ilia Chirkunov <xc@yar.net> on 16.01.2021.
  */
 
 import 'package:flutter/material.dart';

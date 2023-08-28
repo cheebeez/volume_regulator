@@ -1,7 +1,7 @@
 /*
  *  VolumeRegulator.swift
  *
- *  Created by Ilya Chirkunov <xc@yar.net> on 19.01.2021.
+ *  Created by Ilia Chirkunov <xc@yar.net> on 19.01.2021.
  */
  
 import MediaPlayer

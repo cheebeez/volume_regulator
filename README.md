@@ -11,7 +11,7 @@ To use this package, add `volume_regulator` as a dependency in your `pubspec.yam
 
 ```yaml
 dependencies:
-  volume_regulator: ^2.2.0
+  volume_regulator: ^2.3.0
 ```
 
 ### iOS

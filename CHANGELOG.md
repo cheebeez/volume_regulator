@@ -1,11 +1,15 @@
+## 2.3.0
+
+* Updated Gradle to the current version.
+
 ## 2.2.0
 
-* Updated Android target SDK to 34.
-* Updated example.
+* Updated Android target SDK to version 34.
+* Updated example project to reflect the latest changes.
 
 ## 2.1.0
 
-* Add iOS 15 support.
+* Added support for iOS 15.
 
 ## 2.0.0
 

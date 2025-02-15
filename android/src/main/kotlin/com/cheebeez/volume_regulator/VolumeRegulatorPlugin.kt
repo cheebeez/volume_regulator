@@ -21,7 +21,6 @@ import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.EventChannel.EventSink
 import io.flutter.plugin.common.EventChannel.StreamHandler
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** VolumeRegulatorPlugin */
 class VolumeRegulatorPlugin: FlutterPlugin, MethodCallHandler {

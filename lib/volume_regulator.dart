@@ -1,7 +1,7 @@
 /*
  *  volume_regulator.dart
  *
- *  Created by Ilia Chirkunov <xc@yar.net> on 16.01.2021.
+ *  Created by Ilia Chirkunov <contact@cheebeez.com> on 16.01.2021.
  */
 
 import 'dart:async';

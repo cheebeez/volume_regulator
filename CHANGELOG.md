@@ -1,3 +1,7 @@
+## 2.4.2
+
+* Upgrade gradle
+
 ## 2.4.1
 
 * Remove unnecessary import causing build error.
